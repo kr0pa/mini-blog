@@ -8,3 +8,9 @@ class BlogView(View):
         posts = Post.objects.all()
 
         return render(request, "home.html", {"posts": posts})
+    
+class BlogCreateView(View):
+    def get(self, request):
+        template= "post_new.html"
+        
+        return render(request, self.template)
