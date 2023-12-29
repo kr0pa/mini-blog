@@ -7,4 +7,4 @@ class BlogView(View):
     def get(self, request):
         posts = Post.objects.all()
 
-        return render(request, "home.html")
+        return render(request, "home.html", {"posts": posts})

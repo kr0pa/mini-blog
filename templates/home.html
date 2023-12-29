@@ -1,9 +1,6 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} {% block content %} {% for post in posts %}
 <div>
-  <h2>Posts</h2>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere commodi fuga
-    repellat laudantium, aliquam molestias inventore veritatis eos. Ad, facere?
-  </p>
+  <h2>{{ post.title }}</h2>
+  <p>{{ post.body }}</p>
 </div>
-{% endblock content %}
+{% endfor %} {% endblock content %}
