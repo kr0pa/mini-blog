@@ -4,17 +4,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <title>Django Blog</title>
   </head>
   <body>
     <header>
-      <h2>Django Blog</h2>
-      <h3>+ New Blog Post</h3>
+      <h2><a href="{% url 'home' %}">Django Blog</a></h2>
+      <h3><a href="{% url 'post_new' %}">+ New Blog Post</a></h3>
     </header>
 
     <hr />
 
-    <main>{% block content %} {% endblock content %}</main>
+    <main>
+      {% block content %}
+
+      {% endblock %}
+    </main>
   </body>
 </html>
