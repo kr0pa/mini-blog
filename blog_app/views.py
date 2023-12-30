@@ -27,3 +27,21 @@ class BlogCreateView(View):
 class BlogDetailView(DetailView):
     model = Post
     template_name = "post_detail.html"
+    
+class BlogUpdateView(View):
+    template = "post_new.html"
+    
+    def get(self, request, pk):
+        post = Post.objects.get(id=pk)
+        form = PostForm(instance=post)
+        return render(request, self.template, {"form": form})
+    
+    def post(self, request, pk):
+        post = Post.objects.get(id=pk)
+        form = PostForm(request.POST, instance=post)
+        
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+        
+        return render(request, self.template, {"form": form})
