@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import DetailView
+from django.views.generic import DetailView, DeleteView
 from .models import Post
 from .forms import PostForm
 
@@ -45,3 +46,8 @@ class BlogUpdateView(View):
             return redirect("home")
         
         return render(request, self.template, {"form": form})
+    
+class BlogDeleteView(DeleteView):
+    model = Post
+    template_name = "post_delete.html"
+    success_url = reverse_lazy("home")
